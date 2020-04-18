@@ -1,0 +1,25 @@
+{
+  "extends": ["prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
+  "root": true,
+  "rules": {
+    "prettier/prettier": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "eqeqeq": ["error", "always"],
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
+    "no-use-before-define": "error",
+    "array-bracket-spacing": ["error", "always", { "singleValue": false }],
+    "block-spacing": "error",
+    "object-curly-spacing": ["error", "always"],
+    "default-case": "error",
+    "prefer-const": "error"
+  }
+}
