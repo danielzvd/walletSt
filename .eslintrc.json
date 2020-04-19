@@ -20,7 +20,6 @@
     "semi": ["error", "always"],
     "eqeqeq": ["error", "always"],
     "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
-    "no-use-before-define": "error",
     "block-spacing": "error",
     "object-curly-spacing": ["error", "always"],
     "default-case": "error",

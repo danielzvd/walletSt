@@ -2,7 +2,6 @@ import React from 'react';
 import { Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from '!/screens/Welcome/Welcome';
-import Login from '!/screens/Login/Login';
 import logoHorizontal from '!/assets/images/logo-horizontal.png';
 const Stack = createStackNavigator();
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -55,9 +54,8 @@ const StackNavigator = ({ navigation }) => {
       <Stack.Screen
         name="Welcome"
         component={Welcome}
-        options={screenOptions}
+        options={{ headerShown: false }}
       />
-      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 };
