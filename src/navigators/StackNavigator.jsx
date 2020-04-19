@@ -6,6 +6,7 @@ import logoHorizontal from '!/assets/images/logo-horizontal.png';
 const Stack = createStackNavigator();
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Register from '!/screens/Register/Register';
 
 const StackNavigator = ({ navigation }) => {
   const screenOptions = ({ navigation }) => ({
@@ -54,6 +55,11 @@ const StackNavigator = ({ navigation }) => {
       <Stack.Screen
         name="Welcome"
         component={Welcome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

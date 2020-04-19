@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TextInput,
-  Keyboard,
-} from 'react-native';
+import { View, Text, Image, TextInput, Keyboard, Animated } from 'react-native';
 import logo from '!/assets/images/logo.png';
 import Button from '!/components/Button/Button';
 import styles from './style';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Welcome = ({ navigation }) => {
   const [login, setLogin] = useState();
   const [password, setPassword] = useState();
+  const fadeAnim = useRef(new Animated.Value(500)).current;
 
   const onLoginPress = () => {
     Keyboard.dismiss();
   };
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 2500,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
   return (
     <View style={styles.background}>
@@ -27,7 +30,13 @@ const Welcome = ({ navigation }) => {
         style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
         <Image source={logo} style={styles.logo} />
       </View>
-      <View style={styles.backContainer}>
+      <Animated.View
+        style={[
+          styles.backContainer,
+          {
+            transform: [{ translateY: fadeAnim }],
+          },
+        ]}>
         <View style={styles.frontContainer}>
           <View style={styles.loginContainer}>
             <View style={styles.inputContainer}>
@@ -69,7 +78,7 @@ const Welcome = ({ navigation }) => {
           />
           <Button title="Register" buttonStyle={styles.buttonNoBorder} />
         </View>
-      </View>
+      </Animated.View>
     </View>
   );
 };
