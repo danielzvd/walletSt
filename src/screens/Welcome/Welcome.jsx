@@ -2,10 +2,10 @@ import React from 'react';
 
 import { View, Text } from 'react-native';
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <View>
-      <Text>Sejam bem-vindos</Text>
+      <Text onPress={() => navigation.navigate('Login')}>Sejam bem-vindos</Text>
     </View>
   );
 };
