@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Register from '!/screens/Register/Register';
+import Home from '!/screens/Home/Home';
 
 const StackNavigator = ({ navigation }) => {
   const screenOptions = ({ navigation }) => ({
@@ -62,6 +63,7 @@ const StackNavigator = ({ navigation }) => {
         component={Register}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="Home" component={Home} options={screenOptions} />
     </Stack.Navigator>
   );
 };

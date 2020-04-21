@@ -5,21 +5,21 @@ import { View, Text, Image, TextInput, Keyboard, Animated } from 'react-native';
 import logo from '!/assets/images/logo.png';
 import Button from '!/components/Button/Button';
 import styles from './style';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Welcome = ({ navigation }) => {
   const [login, setLogin] = useState();
   const [password, setPassword] = useState();
-  const fadeAnim = useRef(new Animated.Value(500)).current;
+  const fadeAnim = useRef(new Animated.Value(400)).current;
 
   const onLoginPress = () => {
     Keyboard.dismiss();
+    navigation.navigate('Home');
   };
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 2500,
+      duration: 900,
       useNativeDriver: true,
     }).start();
   }, []);
