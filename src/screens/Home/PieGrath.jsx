@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { VictoryPie } from 'victory-native';
 import { View, Text } from 'react-native';
+import styles from './style';
 
-const PieGrath = ({ data }) => {
+const DISTANCE_FROM_INNER_RADIUS = 60;
+
+const PieGrath = ({ data, opacity }) => {
   const pieData = data.map(({ key, amount, title }) => ({
     y: amount,
     key: key,
@@ -13,7 +16,7 @@ const PieGrath = ({ data }) => {
 
   useEffect(() => {
     const aux = [];
-    data.map((each) => aux.push(each.amount));
+    data.map((each) => aux.push(each.amount + '%'));
 
     setLabel(aux);
   }, [data]);
@@ -24,36 +27,32 @@ const PieGrath = ({ data }) => {
         data={pieData}
         colorScale={pieColor}
         animate={{ easing: 'exp' }}
-        height={330}
-        innerRadius={60}
+        height={300}
+        innerRadius={50}
         labelPosition="centroid"
-        labelRadius={({ innerRadius }) => innerRadius + 65}
-        padAngle={2}
+        labelRadius={({ innerRadius }) =>
+          innerRadius + DISTANCE_FROM_INNER_RADIUS
+        }
+        padAngle={1}
         labels={label}
         style={{
           data: {
             fillOpacity: 0.7,
           },
           labels: {
-            fontSize: 16,
+            fontSize: 14,
             stroke: '#525252',
             strokeWidth: 0.1,
+            fillOpacity: opacity,
           },
         }}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          marginBottom: 20,
-        }}>
+      <View style={styles.graphBottomLabels}>
         {data.map((each) => {
           return (
-            <View
-              key={each.key}
-              style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View key={each.key} style={styles.labelsView}>
               <View
-                style={{ height: 10, width: 10, backgroundColor: each.color }}
+                style={[styles.labelEach, { backgroundColor: each.color }]}
               />
               <Text style={{ color: each.color, marginLeft: 5 }}>
                 {each.title}

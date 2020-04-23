@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
+  documentIcon: { marginLeft: 10 },
+
   sideBySide: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -47,6 +49,38 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#9c9c9c',
   },
+
+  //dataRow
+
+  sideBySideDataRow: {
+    flexDirection: 'row',
+  },
+  sideBySideData: {
+    marginTop: 7,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  dataMark: {
+    height: '100%',
+    width: 3,
+    marginRight: 8,
+  },
+  percentageDataRow: {
+    marginLeft: 90,
+  },
+  title: {
+    color: '#595959',
+  },
+
+  //pieGrath
+
+  graphBottomLabels: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 20,
+  },
+  labelsView: { flexDirection: 'row', alignItems: 'center' },
+  labelEach: { height: 10, width: 10 },
 });
 
 export default styles;

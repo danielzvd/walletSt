@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+
+import styles from './style';
 
 const DataRow = ({ name, value, percentage }) => {
   const greenOrRed = (mark) => {
@@ -22,12 +24,12 @@ const DataRow = ({ name, value, percentage }) => {
 
   return (
     <View style={styles.sideBySideData}>
-      <View style={[styles.sideBySide]}>
+      <View style={[styles.sideBySideDataRow]}>
         <View
           style={[styles.dataMark, { backgroundColor: greenOrRed('mark') }]}
         />
         <Text style={styles.title}>{name}</Text>
-        <Text style={[styles.percentage, { color: greenOrRed() }]}>
+        <Text style={[styles.percentageDataRow, { color: greenOrRed() }]}>
           {percentage ? percentage + '%' : null}
         </Text>
       </View>
@@ -37,27 +39,5 @@ const DataRow = ({ name, value, percentage }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  sideBySide: {
-    flexDirection: 'row',
-  },
-  sideBySideData: {
-    marginTop: 7,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  dataMark: {
-    height: '100%',
-    width: 3,
-    marginRight: 8,
-  },
-  percentage: {
-    marginLeft: 90,
-  },
-  title: {
-    color: '#595959',
-  },
-});
 
 export default DataRow;
