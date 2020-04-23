@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginTop: 10,
-    backgroundColor: '#f2f4ff',
     elevation: 3,
     borderRadius: 10,
   },
@@ -27,12 +26,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     alignSelf: 'center',
-    color: '#899eff',
     marginLeft: 10,
   },
 
   percentage: {
-    color: '#39a300',
     alignSelf: 'center',
     marginRight: 5,
     fontSize: 18,
@@ -47,7 +44,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: 10,
     marginBottom: 10,
-    color: '#9c9c9c',
   },
 
   //dataRow
@@ -67,9 +63,6 @@ const styles = StyleSheet.create({
   },
   percentageDataRow: {
     marginLeft: 90,
-  },
-  title: {
-    color: '#595959',
   },
 
   //pieGrath

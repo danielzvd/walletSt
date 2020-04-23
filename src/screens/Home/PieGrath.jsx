@@ -11,7 +11,9 @@ const PieGrath = ({ data, opacity }) => {
     key: key,
     title: title,
   }));
+
   const pieColor = data.map((each) => each.color);
+
   const [label, setLabel] = useState();
 
   useEffect(() => {
@@ -41,7 +43,6 @@ const PieGrath = ({ data, opacity }) => {
           },
           labels: {
             fontSize: 14,
-            stroke: '#525252',
             strokeWidth: 0.1,
             fillOpacity: opacity,
           },

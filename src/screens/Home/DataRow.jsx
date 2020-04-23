@@ -2,23 +2,25 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 import styles from './style';
+import { useTheme } from '!/hooks/use-theme';
 
 const DataRow = ({ name, value, percentage }) => {
+  const { theme, changeTheme } = useTheme();
   const greenOrRed = (mark) => {
     if (name !== 'Total investido' && name !== 'Total disponível') {
       if (parseFloat(value) > 0) {
-        return '#39a300';
+        return theme.successColor;
       }
       if (parseFloat(value) === 0) {
-        return '#e09e02';
+        return theme.warningColor;
       }
       if (parseFloat(value) < 0) {
-        return '#ff0000';
+        return theme.dangerColor;
       } else return null;
     } else {
       if (mark === 'mark') {
-        return '#5372ff';
-      } else return '#595959';
+        return theme.primaryColor;
+      } else return theme.textColor;
     }
   };
 
@@ -28,7 +30,7 @@ const DataRow = ({ name, value, percentage }) => {
         <View
           style={[styles.dataMark, { backgroundColor: greenOrRed('mark') }]}
         />
-        <Text style={styles.title}>{name}</Text>
+        <Text style={{ color: theme.textColor }}>{name}</Text>
         <Text style={[styles.percentageDataRow, { color: greenOrRed() }]}>
           {percentage ? percentage + '%' : null}
         </Text>

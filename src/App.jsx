@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
+import { ThemeProvider } from '!/hooks/use-theme';
 import StackNavigator from '!/navigators/StackNavigator';
 
 const App = () => {
@@ -11,9 +11,11 @@ const App = () => {
     StatusBar.setBarStyle('light-content', true);
   }, []);
   return (
-    <NavigationContainer>
-      <StackNavigator />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 };
 

@@ -7,34 +7,41 @@ import ItemSeparator from '!/components/ItemSeparator/ItemSeparator';
 import { useIsFocused } from '@react-navigation/native';
 import styles from './style';
 import Button from '!/components/Button/Button';
+import { useTheme } from '!/hooks/use-theme';
 
 const Home = ({ navigation }) => {
+  const { theme, changeTheme } = useTheme();
   const isFocused = useIsFocused();
   const [opacity, setOpacity] = useState(0);
   const [data, setData] = useState(defaultData);
 
   useEffect(() => {
-    console.log(isFocused);
     if (isFocused) {
       setOpacity(1);
       setData([
         {
           key: 1,
           amount: 55.55,
-          color: '#ff0084',
+          color: theme.acoesColor,
           title: 'Ações',
         },
         {
           key: 2,
-          amount: 35.89,
-          color: '#ea00ff',
-          title: 'Tesouro',
+          amount: 4.45,
+          color: theme.fundoImbColor,
+          title: 'Fundos',
         },
         {
           key: 3,
-          amount: 0.89,
-          color: '#006aff',
-          title: 'Fundos',
+          amount: 29.1,
+          color: theme.etfColor,
+          title: 'ETF',
+        },
+        {
+          key: 4,
+          amount: 10.9,
+          color: theme.tesouroDirColor,
+          title: 'Tesouro',
         },
       ]);
     } else {
@@ -44,24 +51,25 @@ const Home = ({ navigation }) => {
   }, [isFocused]);
 
   useEffect(() => {}, []);
-  /*
-    color: '#ffaa00',
-    color: '#9a6bff',
- */
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.cardColor }]}>
       <View style={styles.headerContainer}>
         <View style={styles.sideBySide}>
           <Icon
             name="file-document-outline"
-            color="#899eff"
+            color={theme.secondaryColor}
             size={28}
             style={styles.documentIcon}></Icon>
-          <Text style={styles.textTitle}>Summary</Text>
+          <Text style={[styles.textTitle, { color: theme.secondaryColor }]}>
+            Summary
+          </Text>
         </View>
         <View style={styles.sideBySide}>
-          <Text style={styles.percentage}>10.00 %</Text>
-          <Icon name="trending-up" size={28} color={'#39a300'}></Icon>
+          <Text style={[styles.percentage, { color: theme.successColor }]}>
+            10.00 %
+          </Text>
+          <Icon name="trending-up" size={28} color={theme.successColor}></Icon>
         </View>
       </View>
       <ItemSeparator />
@@ -73,12 +81,12 @@ const Home = ({ navigation }) => {
         <DataRow name="Taxa interna de retorno" value={'10'} />
       </View>
       <PieGrath data={data} opacity={opacity} />
-      <Text style={styles.dateAndHour}>21/04/2020 às 17h06</Text>
+      <Text style={[styles.dateAndHour, { color: theme.dateAndHourColor }]}>
+        21/04/2020 às 17h06
+      </Text>
     </View>
   );
 };
-
-export default Home;
 
 const defaultData = [
   {
@@ -95,8 +103,16 @@ const defaultData = [
   },
   {
     key: 3,
+    amount: 0,
+    color: '#f2f4ff',
+    title: '',
+  },
+  {
+    key: 4,
     amount: 100,
     color: '#006aff',
     title: '',
   },
 ];
+
+export default Home;
