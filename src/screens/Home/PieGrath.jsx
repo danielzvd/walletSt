@@ -1,47 +1,68 @@
-import React from 'react';
-import { PieChart } from 'react-native-svg-charts';
-import { Circle, G, Line } from 'react-native-svg';
+import React, { useEffect, useState } from 'react';
+import { VictoryPie } from 'victory-native';
+import { View, Text } from 'react-native';
 
 const PieGrath = ({ data }) => {
-  const pieData = data.map(({ key, amount, color }) => ({
-    value: amount,
-    svg: { fill: color },
+  const pieData = data.map(({ key, amount, title }) => ({
+    y: amount,
     key: key,
+    title: title,
   }));
+  const pieColor = data.map((each) => each.color);
+  const [label, setLabel] = useState();
 
-  const Labels = ({ slices }) => {
-    return slices.map((slice, index) => {
-      const { labelCentroid, pieCentroid, data } = slice;
-      console.log(data.value);
-      return (
-        <G key={index}>
-          <Line
-            x1={labelCentroid[0]}
-            y1={labelCentroid[1]}
-            x2={pieCentroid[0]}
-            y2={pieCentroid[1]}
-            stroke={data.svg.fill}
-          />
-          <Circle
-            cx={labelCentroid[0]}
-            cy={labelCentroid[1]}
-            r={20}
-            fill={data.svg.fill}
-          />
-        </G>
-      );
-    });
-  };
+  useEffect(() => {
+    const aux = [];
+    data.map((each) => aux.push(each.amount));
+
+    setLabel(aux);
+  }, [data]);
 
   return (
-    <PieChart
-      style={{ height: 350 }}
-      data={pieData}
-      innerRadius={'40%'}
-      outerRadius={'65%'}
-      labelRadius={'85%'}>
-      <Labels />
-    </PieChart>
+    <View>
+      <VictoryPie
+        data={pieData}
+        colorScale={pieColor}
+        animate={{ easing: 'exp' }}
+        height={330}
+        innerRadius={60}
+        labelPosition="centroid"
+        labelRadius={({ innerRadius }) => innerRadius + 65}
+        padAngle={2}
+        labels={label}
+        style={{
+          data: {
+            fillOpacity: 0.7,
+          },
+          labels: {
+            fontSize: 16,
+            stroke: '#525252',
+            strokeWidth: 0.1,
+          },
+        }}
+      />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          marginBottom: 20,
+        }}>
+        {data.map((each) => {
+          return (
+            <View
+              key={each.key}
+              style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View
+                style={{ height: 10, width: 10, backgroundColor: each.color }}
+              />
+              <Text style={{ color: each.color, marginLeft: 5 }}>
+                {each.title}
+              </Text>
+            </View>
+          );
+        })}
+      </View>
+    </View>
   );
 };
 

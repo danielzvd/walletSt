@@ -1,40 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import PieGrath from './PieGrath';
 import DataRow from './DataRow';
 import ItemSeparator from '!/components/ItemSeparator/ItemSeparator';
 import styles from './style';
 
 const Home = () => {
-  const data = [
+  const [data, setData] = useState([
     {
       key: 1,
-      amount: 50,
-      color: '#ff0084',
+      amount: 0,
+      color: '#f2f4ff',
+      title: '',
     },
     {
       key: 2,
-      amount: 20,
-      color: '#ea00ff',
+      amount: 0,
+      color: '#f2f4ff',
+      title: '',
     },
     {
       key: 3,
-      amount: 15,
+      amount: 100,
       color: '#006aff',
+      title: '',
     },
-    {
-      key: 4,
-      amount: 10,
-      color: '#ffaa00',
-    },
-    {
-      key: 5,
-      amount: 5,
-      color: '#9a6bff',
-    },
-  ];
+  ]);
 
+  useEffect(() => {
+    setData([
+      {
+        key: 1,
+        amount: 50,
+        color: '#ff0084',
+        title: 'Ações',
+      },
+      {
+        key: 2,
+        amount: 35,
+        color: '#ea00ff',
+        title: 'Tesouro',
+      },
+      {
+        key: 3,
+        amount: 15,
+        color: '#006aff',
+        title: 'Fundos',
+      },
+    ]);
+  }, []);
+  /*
+    color: '#ffaa00',
+    color: '#9a6bff',
+ */
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>

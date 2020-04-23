@@ -3,7 +3,6 @@ import { StyleSheet, View, Text } from 'react-native';
 
 const DataRow = ({ name, value, percentage }) => {
   const greenOrRed = (mark) => {
-    console.log(mark);
     if (name !== 'Total investido' && name !== 'Total disponível') {
       if (parseFloat(value) > 0) {
         return '#39a300';
