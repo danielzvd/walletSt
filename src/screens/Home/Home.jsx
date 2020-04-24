@@ -6,7 +6,7 @@ import DataRow from './DataRow';
 import ItemSeparator from '!/components/ItemSeparator/ItemSeparator';
 import { useIsFocused } from '@react-navigation/native';
 import styles from './style';
-import Button from '!/components/Button/Button';
+
 import { useTheme } from '!/hooks/use-theme';
 
 const Home = ({ navigation }) => {

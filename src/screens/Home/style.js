@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
   dataContainer: {
     marginHorizontal: 10,
-    marginBottom: 30,
+    marginBottom: 5,
   },
 
   dateAndHour: {

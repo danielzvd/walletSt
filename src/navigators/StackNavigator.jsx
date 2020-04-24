@@ -33,7 +33,7 @@ const StackNavigator = ({ navigation }) => {
       />
     ),
     headerLeft: () => (
-      <TouchableOpacity onPress={() => false}>
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <Icon name="menu" size={32} color="#FFFFFF" style={{ padding: 15 }} />
       </TouchableOpacity>
     ),

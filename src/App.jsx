@@ -3,7 +3,8 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '!/hooks/use-theme';
-import StackNavigator from '!/navigators/StackNavigator';
+
+import DrawerNavigator from '!/navigators/DrawerNavigator';
 
 const App = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <ThemeProvider>
       <NavigationContainer>
-        <StackNavigator />
+        <DrawerNavigator />
       </NavigationContainer>
     </ThemeProvider>
   );
